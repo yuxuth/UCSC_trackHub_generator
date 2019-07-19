@@ -354,7 +354,7 @@ def write_hub(file, hub, depth, in_root, outdir):
                 if os.path.islink(os.path.join(os.path.abspath(outdir),track)):
                     os.remove(os.path.join(outdir,track))
                 ## link track into output dir
-                os.symlink(os.path.realpath(os.path.join(in_root,hub[container]['tracks'][track]['bigDataUrl'])), os.path.join(outdir,track))
+                os.symlink(os.path.relpath(os.path.join(in_root,hub[container]['tracks'][track]['bigDataUrl']), outdir), os.path.join(outdir,track))
                 file.write("\n")
 
 def main():
