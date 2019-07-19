@@ -1,7 +1,0 @@
-test.super:
-  html: examplePage
-  longLabel: test.super
-  priority: 1
-  shortLabel: test.super
-  superTrack: on show
-  track: test.super
