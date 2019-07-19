@@ -65,7 +65,7 @@ bigwig_default = {"track": None,
                   "color": "255,0,0"
                   }
 
-## bigwig configuration that can be part of multiwgig container or 
+## bigwig configuration that can be part of multiwig container or 
 ## individual bigwig track (if track is not in multiwig container) 
 bigwig_combined = {"visibility": "hide",
                   "maxHeightPixels": "500:20:8",
