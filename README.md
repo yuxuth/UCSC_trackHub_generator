@@ -5,7 +5,7 @@ Author: Steffen Heyne, MPI-IE Freiburg, Germany
 
 ## usage example
 
-trackHub_generator.py -o mm10_upload mm10/
+`trackHub_generator.py -o mm10_upload mm10/`
 
 Parses mm10/ directory and writes tracksDb.txt to mm10_upload/ and also links used files to mm10_upload/
 
