@@ -1,5 +1,5 @@
 # UCSC_trackHub_generator
-script that parses a local directory structure and maps this to a UCSC trackDB.txt config
+script that parses a local directory structure and maps this to a UCSC trackDb.txt config
 
 Author: Steffen Heyne, MPI-IE Freiburg, Germany
 
@@ -7,7 +7,7 @@ Author: Steffen Heyne, MPI-IE Freiburg, Germany
 
 `trackHub_generator.py -o mm10_upload mm10/`
 
-Parses mm10/ directory and writes tracksDb.txt to mm10_upload/ and also links used files to mm10_upload/
+Parses mm10/ directory and writes tracksDb.txt to mm10_upload/ and also links all used files to mm10_upload/
 
 Recognized subdirs (in the example under mm10/)
      
@@ -18,7 +18,7 @@ Recognized subdirs (in the example under mm10/)
     Only one nesting level is supported by UCSC! So only super containers can hold one 
     level of multiwig or composite containers, not more! 
 
-    Composite/multiwig containers can only contain tracks.
+    composite/ multiwig containers can only contain tracks.
     
     The toplevel can contain tracks (not related to any container)
     

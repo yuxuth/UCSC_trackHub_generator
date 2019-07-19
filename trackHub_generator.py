@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+## Author: Steffen Heyne, MPI-IE Freiburg, Germany
+## script that parses a local directory structure and maps this to a UCSC trackDB.txt config
+## https://github.com/steffenheyne/UCSC_trackHub_generator
+
 import argparse
 import os.path
 import glob
