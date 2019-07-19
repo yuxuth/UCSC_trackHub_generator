@@ -1,0 +1,10 @@
+genome mm9
+trackDb mm9/trackDb.txt
+
+genome mm10
+trackDb mm10/trackDb.txt
+
+genome dm6
+trackDb dm6/trackDb.txt
+
+
