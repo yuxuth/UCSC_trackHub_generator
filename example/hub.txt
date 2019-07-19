@@ -1,5 +1,5 @@
-hub pospisilik_VAI_trackhub
-shortLabel pospisiliklab_trackhub
-longLabel This is the trackhub for the Pospisilik lab at VAI
+hub test_trackhub
+shortLabel test_trackhub
+longLabel This is the trackhub for test lab
 genomesFile genomes.txt
-email admin@vai.org
+email admin@test.org
