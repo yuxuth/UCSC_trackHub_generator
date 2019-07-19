@@ -21,6 +21,8 @@ pp = pprint.PrettyPrinter()
 ## bigwig colors
 ## keys are used as regex pattern against filename/ 'track' key in dict
 bigwig_colors = {
+    "CD24.*H3K27ac": "252,78,42",
+    "CD24.*H3K27me3": "140,107,177",
     "input":    "150,150,150",
     "H3K4me1":  "65,171,93",
     "H3K4me2":  "161,217,155",
@@ -93,6 +95,10 @@ bigbed_default = {
 ## keys are used as regex pattern against filename/ 'track' key in dict
 ## more specific patterns should come first in dict as we break loop after first match
 bigwig_specific = {
+    "CD24.*H3K27ac": {
+        "viewLimits": "0:30"},
+    "CD24.*H3K27me3": {
+        "viewLimits": "0:20"},
     "methyl|WGBS": {
         "viewLimits": "0:100",
         "maxHeightPixels": "500:30:8"},
