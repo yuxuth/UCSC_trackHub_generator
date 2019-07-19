@@ -1,0 +1,41 @@
+Adipocytes_10min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw:
+  bigDataUrl: test.super/test_H3K9me3.multiwig/Adipocytes_10min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+  color: 29,145,192
+  longLabel: Adipocytes_10min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+  parent: test_H3K9me3.multiwig
+  shortLabel: Adipocytes_10min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+  track: track_2
+  type: bigWig
+Adipocytes_15min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw:
+  bigDataUrl: test.super/test_H3K9me3.multiwig/Adipocytes_15min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+  color: 29,145,192
+  longLabel: Adipocytes_15min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+  parent: test_H3K9me3.multiwig
+  shortLabel: Adipocytes_15min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+  track: track_3
+  type: bigWig
+Adipocytes_5min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw:
+  bigDataUrl: test.super/test_H3K9me3.multiwig/Adipocytes_5min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+  color: 29,145,192
+  longLabel: Adipocytes_5min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+  parent: test_H3K9me3.multiwig
+  shortLabel: Adipocytes_5min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+  track: track_1
+  type: bigWig
+test_H3K9me3.multiwig:
+  aggregate: transparentOverlay
+  alwaysZero: 'on'
+  autoScale: 'off'
+  container: multiWig
+  html: examplePage
+  longLabel: test_H3K9me3.multiwig
+  maxHeightPixels: '500:20:8'
+  parent: test.super
+  priority: 1
+  shortLabel: test_H3K9me3.multiwig
+  showSubtrackColorOnUi: 'on'
+  track: test_H3K9me3.multiwig
+  type: bigWig
+  viewLimits: 0:8
+  visibility: hide
+  windowingFunction: mean+whiskers

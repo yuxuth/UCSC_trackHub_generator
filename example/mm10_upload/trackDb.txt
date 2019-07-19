@@ -4,7 +4,48 @@ shortLabel test.super
 longLabel test.super
 priority 1
 html examplePage
- 
+
+     track test_H3K9me3.multiwig
+     type bigWig
+     container multiWig
+     parent test.super
+     shortLabel test_H3K9me3.multiwig
+     longLabel test_H3K9me3.multiwig
+     aggregate transparentOverlay
+     showSubtrackColorOnUi on
+     priority 1
+     html examplePage
+     visibility hide
+     maxHeightPixels 500:20:8
+     viewLimits 0:8
+     alwaysZero on
+     autoScale off
+     windowingFunction mean+whiskers
+
+          track track_1
+          type bigWig
+          parent test_H3K9me3.multiwig
+          bigDataUrl Adipocytes_5min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          shortLabel Adipocytes_5min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          longLabel Adipocytes_5min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          color 29,145,192
+
+          track track_2
+          type bigWig
+          parent test_H3K9me3.multiwig
+          bigDataUrl Adipocytes_10min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          shortLabel Adipocytes_10min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          longLabel Adipocytes_10min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          color 29,145,192
+
+          track track_3
+          type bigWig
+          parent test_H3K9me3.multiwig
+          bigDataUrl Adipocytes_15min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          shortLabel Adipocytes_15min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          longLabel Adipocytes_15min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          color 29,145,192
+
      track test_H3K9ac.multiwig
      type bigWig
      container multiWig
@@ -22,23 +63,7 @@ html examplePage
      autoScale off
      windowingFunction mean+whiskers
 
-          track track_2221
-          type bigWig
-          parent test_H3K9ac.multiwig
-          bigDataUrl Adipocytes_5min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
-          shortLabel Adipocytes_5min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
-          longLabel Adipocytes_5min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
-          color 164,0,0
-
-          track track_2222
-          type bigWig
-          parent test_H3K9ac.multiwig
-          bigDataUrl Adipocytes_10min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
-          shortLabel Adipocytes_10min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
-          longLabel Adipocytes_10min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
-          color 164,0,0
-
-          track track_2223
+          track track_4
           type bigWig
           parent test_H3K9ac.multiwig
           bigDataUrl Adipocytes_15min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
@@ -46,3 +71,20 @@ html examplePage
           longLabel Adipocytes_15min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
           color 164,0,0
 
+          track track_5
+          type bigWig
+          parent test_H3K9ac.multiwig
+          bigDataUrl Adipocytes_5min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          shortLabel Adipocytes_5min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          longLabel Adipocytes_5min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          color 164,0,0
+
+          track track_6
+          type bigWig
+          parent test_H3K9ac.multiwig
+          bigDataUrl Adipocytes_10min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          shortLabel Adipocytes_10min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          longLabel Adipocytes_10min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          color 164,0,0
+
+include trackDb.VARI.txt

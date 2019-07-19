@@ -1,0 +1,110 @@
+containers:
+- mm10
+mm10:
+  containers:
+  - test.super
+  test.super:
+    containers:
+    - test_H3K9me3.multiwig
+    - test_H3K9ac.multiwig
+    test_H3K9ac.multiwig:
+      containers: []
+      tracks:
+        Adipocytes_10min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw:
+          bigDataUrl: test.super/test_H3K9ac.multiwig/Adipocytes_10min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          color: 164,0,0
+          longLabel: Adipocytes_10min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          parent: test_H3K9ac.multiwig
+          shortLabel: Adipocytes_10min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          track: track_6
+          type: bigWig
+        Adipocytes_15min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw:
+          bigDataUrl: test.super/test_H3K9ac.multiwig/Adipocytes_15min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          color: 164,0,0
+          longLabel: Adipocytes_15min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          parent: test_H3K9ac.multiwig
+          shortLabel: Adipocytes_15min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          track: track_4
+          type: bigWig
+        Adipocytes_5min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw:
+          bigDataUrl: test.super/test_H3K9ac.multiwig/Adipocytes_5min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          color: 164,0,0
+          longLabel: Adipocytes_5min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          parent: test_H3K9ac.multiwig
+          shortLabel: Adipocytes_5min_H3K9ac.filtered.seq_depth_norm.UCSC_chroms.bw
+          track: track_5
+          type: bigWig
+        test_H3K9ac.multiwig:
+          aggregate: transparentOverlay
+          alwaysZero: 'on'
+          autoScale: 'off'
+          container: multiWig
+          html: examplePage
+          longLabel: test_H3K9ac.multiwig
+          maxHeightPixels: '500:20:8'
+          parent: test.super
+          priority: 1
+          shortLabel: test_H3K9ac.multiwig
+          showSubtrackColorOnUi: 'on'
+          track: test_H3K9ac.multiwig
+          type: bigWig
+          viewLimits: 0:20
+          visibility: hide
+          windowingFunction: mean+whiskers
+    test_H3K9me3.multiwig:
+      containers: []
+      tracks:
+        Adipocytes_10min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw:
+          bigDataUrl: test.super/test_H3K9me3.multiwig/Adipocytes_10min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          color: 29,145,192
+          longLabel: Adipocytes_10min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          parent: test_H3K9me3.multiwig
+          shortLabel: Adipocytes_10min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          track: track_2
+          type: bigWig
+        Adipocytes_15min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw:
+          bigDataUrl: test.super/test_H3K9me3.multiwig/Adipocytes_15min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          color: 29,145,192
+          longLabel: Adipocytes_15min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          parent: test_H3K9me3.multiwig
+          shortLabel: Adipocytes_15min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          track: track_3
+          type: bigWig
+        Adipocytes_5min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw:
+          bigDataUrl: test.super/test_H3K9me3.multiwig/Adipocytes_5min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          color: 29,145,192
+          longLabel: Adipocytes_5min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          parent: test_H3K9me3.multiwig
+          shortLabel: Adipocytes_5min_H3K9me3.filtered.seq_depth_norm.UCSC_chroms.bw
+          track: track_1
+          type: bigWig
+        test_H3K9me3.multiwig:
+          aggregate: transparentOverlay
+          alwaysZero: 'on'
+          autoScale: 'off'
+          container: multiWig
+          html: examplePage
+          longLabel: test_H3K9me3.multiwig
+          maxHeightPixels: '500:20:8'
+          parent: test.super
+          priority: 1
+          shortLabel: test_H3K9me3.multiwig
+          showSubtrackColorOnUi: 'on'
+          track: test_H3K9me3.multiwig
+          type: bigWig
+          viewLimits: 0:8
+          visibility: hide
+          windowingFunction: mean+whiskers
+    tracks:
+      test.super:
+        html: examplePage
+        longLabel: test.super
+        priority: 1
+        shortLabel: test.super
+        superTrack: on show
+        track: test.super
+  tracks:
+    mm10:
+      longLabel: mm10
+      shortLabel: mm10
+      track: mm10
