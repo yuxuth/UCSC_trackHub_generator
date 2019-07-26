@@ -4,6 +4,9 @@
 ## script that parses a local directory structure and maps this to a UCSC trackDB.txt config
 ## https://github.com/steffenheyne/UCSC_trackHub_generator
 
+## UCSC docu
+## https://genome.ucsc.edu/goldenPath/help/trackDb/trackDbHub.html
+
 import argparse
 import os.path
 import glob
@@ -93,6 +96,8 @@ bigbed_default = {
     "itemRgb": "on",
     "color": "255,0,0",
     "visibility": "squish",
+    "maxItems": "100000",
+    "maxWindowToDraw": "20000000"
     #"colorByStrand": "255,0,0 0,0,255"
     }
 
@@ -100,6 +105,7 @@ bigbed_default = {
 ## either for multiwig container or individual bigwig tracks
 ## keys are used as regex pattern against filename/ 'track' key in dict
 ## more specific patterns should come first in dict as we break loop after first match
+## if matching, then the specifc track values are added or overwritten
 bigwig_specific = {
     "CD24.*H3K27ac": {
         "viewLimits": "0:30"},
@@ -149,7 +155,7 @@ composite_default = {"track": None,
 
 
 super_default = {"track": None,
-                 "superTrack": "on show",
+                 "superTrack": "on",
                  "parent": None,
                  "shortLabel": None,
                  "longLabel": None,
