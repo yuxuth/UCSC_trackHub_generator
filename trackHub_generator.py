@@ -90,6 +90,7 @@ bigbed_default = {
     "shortLabel":None,
     "longLabel": None,
     "type": "bigBed 3 +",
+    "itemRgb": "on",
     "color": "255,0,0",
     "visibility": "squish",
     #"colorByStrand": "255,0,0 0,0,255"
@@ -113,6 +114,12 @@ bigwig_specific = {
         "viewLimits": "0:8"},
     "H3K27me3": {
         "viewLimits": "0:14"},
+    "H3K27me2": {
+        "viewLimits": "0:8"},
+    "H3K27me1": {
+        "viewLimits": "0:8"},
+    "H2AK119Ub": {
+        "viewLimits": "0:8"},
     "snRNA": {
         "viewLimits": "0:15",
         "maxHeightPixels": "500:30:8",
@@ -121,6 +128,12 @@ bigwig_specific = {
         "viewLimits": "0:30"},
     }
 
+
+bigbed_specific = {
+    "N25_segmentation.paper_colors": {
+        "type": "bigBed 9 +",
+        "visibility": "dense"},
+    }
 
 composite_default = {"track": None,
                      "parent": None,
@@ -304,6 +317,12 @@ def get_tracks_config(files, type, parents):
             track_config["color"] = get_bigwig_color(track_file,parents[-1],bigbed_default['color'])
             trackCounter += 1
             
+            for pat in bigbed_specific:
+                if re.match(".*("+pat+")",track_file,re.IGNORECASE):
+                    print(" ".join(["match ",track_file," ",pat]))
+                    track_config.update(bigbed_specific[pat])
+                    break
+
             tracks_config[track_file] = track_config
         
     return tracks_config
