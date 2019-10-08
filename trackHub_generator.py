@@ -107,10 +107,12 @@ bigbed_default = {
 ## more specific patterns should come first in dict as we break loop after first match
 ## if matching, then the specifc track values are added or overwritten
 bigwig_specific = {
+    "EpM93_ND|EpM95_ND": {
+        "viewLimits": "0:10"},
     "CD24.*H3K27ac": {
         "viewLimits": "0:30"},
     "CD24.*H3K27me3": {
-        "viewLimits": "0:20"},
+        "viewLimits": "0:20"}, 
     "methyl|WGBS": {
         "viewLimits": "0:100",
         "maxHeightPixels": "500:30:8"},
@@ -137,6 +139,9 @@ bigwig_specific = {
 
 bigbed_specific = {
     "N25_segmentation.paper_colors": {
+        "type": "bigBed 9 +",
+        "visibility": "dense"},
+    "Roadmap_6marks": {
         "type": "bigBed 9 +",
         "visibility": "dense"},
     }
