@@ -59,7 +59,7 @@ multiwig_default = {"track": None,
                     "parent": None,
                     "shortLabel":None,
                     "longLabel": None,
-                    "aggregate": "transparentOverlay",
+                    "aggregate": "none",
                     "showSubtrackColorOnUi": "on",
                     "priority": 1,
                     "html": "examplePage"
@@ -77,11 +77,11 @@ bigwig_default = {"track": None,
 
 ## bigwig configuration that can be part of multiwig container or 
 ## individual bigwig track (if track is not in multiwig container) 
-bigwig_combined = {"visibility": "hide",
-                  "maxHeightPixels": "500:20:8",
-                  "viewLimits": "0:20",
+bigwig_combined = {"visibility": "full",
+                  "maxHeightPixels": "500:50:8",  ## the height
+                  "viewLimits": "0:15",
                   "alwaysZero": "on",
-                  "autoScale": "off",
+                  "autoScale": "on",
                   "windowingFunction": "mean+whiskers",
                   "priority": 1
                   }
@@ -119,7 +119,7 @@ bigwig_specific = {
     "male.*H3K9me3": {
         "viewLimits": "0:15"},
     "H3K9me3": {
-        "viewLimits": "0:8"},
+        "viewLimits": "0:15"},
     "H3K27me3": {
         "viewLimits": "0:14"},
     "H3K27me2": {
@@ -152,7 +152,7 @@ composite_default = {"track": None,
                      "compositeTrack": "on",
                      "shortLabel": None,
                      "longLabel": None,
-                     "visibility": "hide",
+                     "visibility": "full",
                      "priority": 1,
                      "centerLabelsDense": "on",
                      "html": "examplePage"
@@ -169,7 +169,7 @@ super_default = {"track": None,
 }
 
 ## adapted from http://code.activestate.com/recipes/577879-create-a-nested-dictionary-from-oswalk/
-def get_directory_structure(rootdir):
+def get_directory_structure(rootdir, file_path):
     """
     Creates a nested dictionary that represents the folder structure of rootdir
     """
@@ -182,7 +182,7 @@ def get_directory_structure(rootdir):
         subdir = dict.fromkeys(files)
         parent = functools.reduce(dict.get, folders[:-1], dir)
         
-        config = get_container_config(path, folders, subdir)
+        config = get_container_config(path, folders, subdir, file_path)
         
         parent[folders[-1]] = {'containers': dirs}
         parent[folders[-1]].update(config)
@@ -190,7 +190,7 @@ def get_directory_structure(rootdir):
     return dir
 
 
-def get_container_config(path, parents, files):
+def get_container_config(path, parents, files, file_path):
     """
     Creates a trackhub container and tracks config based on current 
     directory name and file content
@@ -244,7 +244,7 @@ def get_container_config(path, parents, files):
     config['tracks'][parents[-1]] = container_config
     
     ## get per track config
-    tracks = get_tracks_config(files, generatorType, parents)
+    tracks = get_tracks_config(files, generatorType, parents, file_path)
     config['tracks'].update(tracks)
     
     ## set type for specific containers 
@@ -272,7 +272,7 @@ def get_container_config(path, parents, files):
 
 
 ## configure tracks for current container
-def get_tracks_config(files, type, parents):
+def get_tracks_config(files, type, parents,file_path):
     """
     Creates a config per track from 'files'
     'type' is current container type
@@ -299,8 +299,9 @@ def get_tracks_config(files, type, parents):
                 track_config.pop('parent',None)
             
             track_config["track"] = "_".join(["track",str(trackCounter)])
-            track_config["bigDataUrl"] = os.path.join(*parents[1:]+[track_file])
-            track_config["shortLabel"] = track_file
+            track_config["bigDataUrl"] =  os.path.join( *parents[1:]+[track_file ]) 
+
+            track_config["shortLabel"] = track_file  
             track_config["longLabel"] = track_file
             track_config["color"] = get_bigwig_color(track_file,parents[-1])
             trackCounter += 1
@@ -322,7 +323,8 @@ def get_tracks_config(files, type, parents):
                 track_config.pop('parent',None)
             
             track_config["track"] = "_".join(["track",str(trackCounter)])
-            track_config["bigDataUrl"] = os.path.join(*parents[1:]+[track_file])
+            track_config["bigDataUrl"] =  os.path.join( *parents[1:]+[track_file])
+     
             track_config["shortLabel"] = track_file
             track_config["longLabel"] = track_file
             track_config["color"] = get_bigwig_color(track_file,parents[-1],bigbed_default['color'])
@@ -369,7 +371,7 @@ def update_config_from_file(path, config):
     return config
 
 
-def write_hub(file, hub, depth, in_root, outdir):
+def write_hub(file, hub, depth, in_root, outdir,file_path):
     
     ## write out container config section
     for container in hub['containers']:
@@ -380,7 +382,7 @@ def write_hub(file, hub, depth, in_root, outdir):
                 file.write("{} {}\n".format(k,v))
             file.write("\n")
             
-        write_hub(file, hub[container], depth+1, in_root, outdir)
+        write_hub(file, hub[container], depth+1, in_root, outdir, file_path)
         
         ## write out all 'child' tracks of container
         for track in hub[container]['tracks']:
@@ -388,6 +390,7 @@ def write_hub(file, hub, depth, in_root, outdir):
                 for k,v in hub[container]['tracks'][track].items():
                     if k=='bigDataUrl':
                         v = hub[container]['tracks'][track][k].split(os.sep)[-1]
+                        v = file_path + v
                     ## indentation
                     file.write("{m: <{de}}".format(m='',de=str(depth*5)))
                     file.write("{} {}\n".format(k,v))
@@ -424,6 +427,10 @@ def main():
                         default=1,
                         type=int,
                         help="numerical index for first track, important if multiple trackDb files are used (default: '%(default)s')")
+    parser.add_argument("-f", "--file_path",
+                        dest="filePath",
+                        default='',
+                        help="host file location")
     
     parser.add_argument("-p", "--postContent",
                         dest="postContent",
@@ -440,14 +447,18 @@ def main():
     
     trackCounter = args.startIndex
     
+    file_path = args.filePath
+    
+    print(file_path)
+    
     ## get the hub by parsing directory structure
-    hub = get_directory_structure(args.indir)
+    hub = get_directory_structure(args.indir, file_path)
 
     os.makedirs(args.outdir,exist_ok = True)
     
     ## write hub config to output dir and link all files for upload into it
     with open(os.path.join(args.outdir,args.trackDbFilename), 'w') as f:
-        write_hub(f,hub,0, args.indir,args.outdir)
+        write_hub(f,hub,0, args.indir,args.outdir, file_path)
         f.write(args.postContent)
         f.close()
     
