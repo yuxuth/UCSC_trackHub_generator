@@ -298,7 +298,7 @@ def get_tracks_config(files, type, parents,file_path):
             else:
                 track_config.pop('parent',None)
             
-            track_config["track"] = "_".join(["track",str(trackCounter)])
+            track_config["track"] = "_".join(["track",str(trackCounter),track_file]) ## add the 
             track_config["bigDataUrl"] =  os.path.join( *parents[1:]+[track_file ]) 
 
             track_config["shortLabel"] = track_file  
